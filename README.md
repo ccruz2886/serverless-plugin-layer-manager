@@ -1,3 +1,5 @@
+# FORKED FROM https://github.com/henhal/serverless-plugin-layer-manager
+
 # serverless-plugin-layer-manager
 
 [![NPM version](https://img.shields.io/npm/v/serverless-plugin-layer-manager.svg)](https://www.npmjs.com/package/serverless-plugin-layer-manager)
@@ -32,6 +34,14 @@ plugins:
 That's it! You may now reference your layers from functions in the same file like
 
 ```
+# OPTIONAL: If you like to run the npm install command with --unsafe-perm flag .e.g "npm install --unsafe-perm"
+# useful if you have a preinstall/postinstall script that needs to run as root
+custom: 
+  plugin:
+    layerManager:
+      NodeLayers:
+        unSafePermissions: true
+
 layers:
   lib:
     path: lib
@@ -61,3 +71,5 @@ custom:
 ```
 
 By default, all config options are true and the `exportPrefix` is set to `${AWS:StackName}-`.
+
+NOTE: ⚠️ If your project is using Typescript, make sure to use built Js files to avoid issues using patterns finding ⚠️
